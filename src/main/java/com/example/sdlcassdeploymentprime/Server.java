@@ -20,6 +20,7 @@ public class Server extends Application {
         primaryStage.setScene(scene); // Place the scene in the stage
         primaryStage.show(); // Display the stage
 
+
         new Thread( () -> {
             try {
                 // Create a server socket
@@ -70,6 +71,10 @@ public class Server extends Application {
                 ex.printStackTrace();
             }
         }).start();
+        Client client = new Client();
+        Stage clientStage = new Stage();
+        clientStage.initOwner(primaryStage);
+        client.start(clientStage);
     }
     /**
      * The main method is only needed for the IDE with limited
